@@ -1,6 +1,5 @@
 # Import necessary libraries
 import streamlit as st
-from openai import OpenAI
 from agents import Head_Agent  
 
 # Set up the title of the application
@@ -10,12 +9,6 @@ st.title("Chatbot 🤖: Najib + Urvashi")
 open_ai_api_key = st.secrets["OPEN_AI_KEY"]
 pinecone_api_key = st.secrets["PINECONE_API_KEY"]
 index_name = "miniproject-2"
-
-client = OpenAI(api_key=open_ai_api_key)
-# Function to get the embeddings of the text using OpenAI text-embedding-3-small model
-def get_embedding(text, model="text-embedding-3-small"):
-   text = text.replace("\n", " ")
-   return client.embeddings.create(input = [text], model=model).data[0].embedding
 
 # Initialize Head Agent
 head_agent = Head_Agent(

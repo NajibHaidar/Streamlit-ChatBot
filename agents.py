@@ -7,11 +7,21 @@ from langchain.vectorstores.pinecone import Pinecone
 from pinecone import Pinecone, ServerlessSpec
 from tqdm.notebook import tqdm
 import openai
-
-
 from tiktoken import get_encoding
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+import streamlit as st
+from openai import OpenAI
 
+# Initialize API keys
+open_ai_api_key = st.secrets["OPEN_AI_KEY"]
+pinecone_api_key = st.secrets["PINECONE_API_KEY"]
+index_name = "miniproject-2"
+
+client = OpenAI(api_key=open_ai_api_key)
+# Function to get the embeddings of the text using OpenAI text-embedding-3-small model
+def get_embedding(text, model="text-embedding-3-small"):
+   text = text.replace("\n", " ")
+   return client.embeddings.create(input = [text], model=model).data[0].embedding
 
 class Obnoxious_Agent:
     def __init__(self, openai_client=None) -> None:
