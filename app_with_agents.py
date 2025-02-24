@@ -1,7 +1,6 @@
 # Import necessary libraries
 import streamlit as st
 from openai import OpenAI
-import os
 from agents import Head_Agent  
 
 # Set up the title of the application
