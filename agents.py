@@ -3,7 +3,7 @@ import time
 import pandas as pd
 from tqdm import tqdm
 import pinecone
-from langchain.vectorstores import Pinecone
+from langchain.vectorstores.pinecone import Pinecone
 from pinecone import Pinecone, ServerlessSpec
 from tqdm.notebook import tqdm
 import openai
