@@ -210,7 +210,7 @@ class Answering_Agent:
         response = self.client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=messages,
-            max_tokens=200 if mode == "chatty" else 100,
+            max_tokens=500 if mode == "chatty" else 200,
             temperature=0.7 if mode == "chatty" else 0.0
         )
 
